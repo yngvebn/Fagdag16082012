@@ -6,7 +6,7 @@ using SignalR;
 namespace Demo.Infrastructure.DomainEventHandlers
 {
     public class NotifyAllClientsWhenCommentIsPosted: IDomainEventHandler<CommentWasPosted>
-    {
+    {   
         public void Handle(CommentWasPosted domainEvent)
         {
             dynamic hubContext = GlobalHost.ConnectionManager.GetHubContext<CommentHub>().Clients;
