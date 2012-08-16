@@ -1,3 +1,4 @@
+using Demo.Infrastructure.Services;
 using DomainEventExtensions;
 using DomainEvents.Ninject;
 using HttpModuleMagic;
@@ -57,7 +58,7 @@ namespace Demo.App_Start
                 .InNamespaces("Demo.Infrastructure.DomainEventHandlers")
                 .BindAllInterfaces()
                 .Configure(binding => binding.InSingletonScope()));
-
+            kernel.Bind<IEmailSender>().To<EmailSender>();
             kernel.Bind(
                 syntax => syntax
                     .FromAssemblyContaining<IDomainEvent>()

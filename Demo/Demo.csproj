@@ -172,6 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Services\IEmailSender.cs" />
     <Compile Include="Infrastructure\DomainEventHandlers\NotifyAllClientsWhenCommentIsPosted.cs" />
     <Compile Include="Infrastructure\DomainEventHandlers\SendEmailToPreviousCommenters.cs" />
     <Compile Include="Infrastructure\DomainEvents\CommentWasPosted.cs" />
