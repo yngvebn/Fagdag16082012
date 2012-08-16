@@ -49,10 +49,10 @@
     <button data-bind="click: $parent.post">
         Post</button>
 </div>
-<li data-bind="foreach: comments">
-    <ul data-bind="text: text">
-    </ul>
-</li>
+<ul data-bind="foreach: comments">
+    <li data-bind="text: text">
+    </li>
+</ul>
 @section scripts
 {
     <script type="text/javascript">
@@ -84,16 +84,17 @@
                     Text: self.newComment().text()
                 });
             };
-            self.newCommentAdded = function (comment) {
-                console.log(comment);
+            $.connection.commentHub.newCommentAdded = function (comment) {
+                self.comments.push(new CommentViewModel(comment));
 
             };
 
         }
         var mainViewModel = new MainViewModel();
-        ko.applyBindings(mainViewModel);
+        
         $.connection.hub.start().done(function () {
             mainViewModel.init();
+            ko.applyBindings(mainViewModel);
         });
 
         
